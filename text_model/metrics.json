@@ -1,0 +1,11 @@
+{
+  "model": "xlm-roberta-base",
+  "accuracy": 0.8840725806451613,
+  "f1": 0.8851819660382589,
+  "classes": [
+    "Anxiety",
+    "Depression",
+    "Normal",
+    "Suicidal"
+  ]
+}
