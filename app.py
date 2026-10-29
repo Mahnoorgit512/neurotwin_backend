@@ -28,10 +28,22 @@ from key_exchange import (
     encrypt_payload,
 )
 
+# if not firebase_admin._apps:
+#     cred = credentials.Certificate(
+#         r"C:\secure\firebase-admin.json"
+#     )
+#     firebase_admin.initialize_app(cred)
+
 if not firebase_admin._apps:
-    cred = credentials.Certificate(
-        r"C:\secure\firebase-admin.json"
-    )
+    firebase_json = os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON")
+
+    if firebase_json:
+        cred = credentials.Certificate(json.loads(firebase_json))
+    else:
+        cred = credentials.Certificate(
+            r"C:\secure\firebase-admin.json"
+        )
+
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
